@@ -158,5 +158,131 @@ console.log(validarEdad(27, "Elena"));
 // never (Es importante que se coloque el tipo de dato never cuando se utilicen funciones dedicadas solo a lanzar errores)
 
 function ErrorUsuario(): never {
-  throw new Error('Error de usuario')
+  throw new Error("Error de usuario");
 }
+
+// Tipos de datos avanzados
+
+// Union type
+let puntaje: number | string = 98;
+puntaje = "98%";
+
+type Animal = {
+  id: number;
+  especie: string;
+};
+
+type Usuario = {
+  id: number;
+  name: string;
+};
+
+let serVivo: Usuario | Animal = { id: 1, name: "Erick" };
+
+function sumaDos(n: number | string): number {
+  if (typeof n === "number") {
+    return n + 2;
+  }
+  return parseInt(n) + 2;
+}
+
+// Intersection type
+
+type Audit = {
+  created_at: string;
+  modified_at: string;
+};
+
+type Product = {
+  name: string;
+};
+
+const product: Audit & Product = {
+  created_at: "",
+  modified_at: "",
+  name: "",
+};
+
+// Literal types
+const nDeFibonacci: 0 | 1 | 2 | 3 | 5 = 3;
+
+type Fibo = 0 | 1 | 2 | 3 | 5;
+const nDeFibo: Fibo = 5;
+
+//Nullable types
+function toNumber(s: string | null | undefined) {
+  if (!s) {
+    return 0;
+  }
+  return parseInt(s);
+}
+
+const n = toNumber("5");
+const x = toNumber(null);
+const y = toNumber(undefined);
+
+// Optional chaining
+
+function getUser(id: number) {
+  if (id < 0) {
+    return null;
+  }
+  return {
+    id: 1,
+    name: "Erick",
+    created_at: new Date(),
+  };
+}
+
+const user = getUser(-1);
+
+console.log(user?.created_at);
+
+const arr1 = null;
+
+arr1?.[0];
+
+const fn5: any = null;
+fn5?.();
+
+// nullish coalescing operator(Sirve cuando el valor de 0 o '' es un valor representativo para nosotros y lo queremos diferenciar de null y/o undefine)
+
+const difficulty: number | null = null;
+
+const user2 = {
+  userName: "Erick",
+  difficulty: difficulty ?? 1,
+};
+
+// Type assertion
+
+const input1 = document.getElementById("user") as HTMLInputElement;
+const input2 = <HTMLInputElement>document.getElementById("user");
+
+// Type narrowing
+
+function narrowing(x: string | number) {
+  if (typeof x === "number") {
+    x.toString;
+    return;
+  }
+
+  if (typeof x === "string") {
+    x.concat;
+    return;
+  }
+}
+
+// Type Unknown
+
+function procesa(algo: unknown): string {
+  if (typeof algo === "string") {
+    return algo.toString();
+  } else {
+    return "holamundo";
+  }
+}
+
+// Programación Orientada a Objetos
+
+
