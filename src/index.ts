@@ -256,8 +256,8 @@ const user2 = {
 
 // Type assertion
 
-const input1 = document.getElementById("user") as HTMLInputElement;
-const input2 = <HTMLInputElement>document.getElementById("user");
+// const input1 = document.getElementById("user") as HTMLInputElement;
+// const input2 = <HTMLInputElement>document.getElementById("user");
 
 // Type narrowing
 
@@ -285,4 +285,94 @@ function procesa(algo: unknown): string {
 
 // Programación Orientada a Objetos
 
+//Definir una clase
+class Personaje {
+  // readonly hace que solo se pueda inicializar una propiedad en el constructor
+  readonly id: number;
+  name: string;
+  nivel: number;
+  // La palabra reservada private hace que la propiedad de la clase no pueda ser accedida desde afuera, solamente puede ser modificada por un método.
+  private _hp: number;
+  // El operador ? vuelve a la propiedad opcinal y se puede acceder a ella despues de haber creado la clase
+  profession?: string;
+  constructor(id: number, name: string, nivel: number, hp: number) {
+    this.id = id;
+    this.name = name;
+    this.nivel = nivel;
+    this._hp = hp;
+  }
 
+  subirNivel(): number {
+    this.nivel = this.nivel + 1;
+    return this.nivel;
+  }
+
+  cambierHp(cantidad: number): number {
+    this._hp = this._hp + cantidad;
+    return this._hp;
+  }
+}
+
+// Otra manera de definir clases (Propiedades por parámetros)
+
+class Personaje2 {
+  profession?: string;
+  // static indica que la propiedad no pertenece a las intancias de la clase, si no a la clase en sí.
+  private static equipo: number = 1;
+  constructor(
+    public readonly id: number,
+    public name: string,
+    public nivel: number,
+    private _hp: number
+  ) {}
+
+  subirNivel(): number {
+    this.nivel = this.nivel + 1;
+    return this.nivel;
+  }
+
+  static agregarPersonaje(): void {
+    Personaje2.equipo++;
+  }
+
+  // Getters y setters
+
+  // Forma legacy
+  getHp(): number {
+    return this._hp;
+  }
+
+  setHp(cantidad: number): number {
+    this._hp = this._hp + cantidad;
+    return this._hp;
+  }
+
+  // con Typescript
+  get hp(): number {
+    return this._hp;
+  }
+
+  static getEquipo(): number {
+    return Personaje2.equipo
+  }
+
+  set hp(cantidad: number) {
+    this._hp = this._hp + cantidad;
+  }
+}
+
+const personaje = new Personaje(1, "Erick", 1, 100);
+personaje.cambierHp(-10);
+console.log(personaje);
+
+if (personaje instanceof Personaje) {
+  console.log("Sí es una instancia");
+} else {
+  console.log("No es una instancia");
+}
+
+const personaje2 = new Personaje2(1, "Erick", 1, 100);
+console.log(personaje2);
+
+Personaje2.agregarPersonaje();
+console.log(Personaje2.getEquipo());
