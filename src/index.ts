@@ -1,4 +1,4 @@
-// Tipos de Datos
+// Tipos de Datos:
 
 // number
 let exticionDinosaurios: number = 76_000_000;
@@ -19,15 +19,15 @@ let animales: string[] = ["perro", "gato", "pollo"];
 let nums: number[] = [1, 2, 3];
 let checks: boolean[] = [true, false];
 
-// Otra alternativa para declarar arrays
+// Otra alternativa para declarar arrays:
 let nums2: Array<number>;
 
-// nums.map(x=> x.toExponential) el autocompletado sugiere métodos del tipo de dato
+// nums.map(x=> x.toExponential) el autocompletado sugiere métodos del tipo de dato.
 
 // tuplas
 let tupla: [number, string[]] = [1, ["erick", "salvador"]];
 
-// Error actual en typescript
+// Error actual en typescript:
 tupla.push(10);
 
 console.log(tupla);
@@ -49,7 +49,7 @@ const talla1 = Talla.Chica;
 
 console.log(talla1);
 
-// Al agregar const antes de enum se optimiza el código de JS
+// Al agregar const antes de enum se optimiza el código de JS.
 const enum LoadingState {
   Idle = "Idle",
   Loading = "Loading",
@@ -63,15 +63,15 @@ console.log(estado);
 // Objetos
 
 const objeto: {
-  // readonly no permite que se sobreescriba la propiedad del objeto una vez inicializado
+  // readonly no permite que se sobreescriba la propiedad del objeto una vez inicializado.
   readonly id: number;
   nombre: string;
-  // ? permite que no se inicialice la propiedad de un objeto cuando este se declara
+  // ? permite que no se inicialice la propiedad de un objeto cuando este se declara.
   apellido?: string;
   talla: Talla;
 } = { id: 1, nombre: "Erick", talla: Talla.ExtraGrande };
 
-// Declarar un objeto a partir de un type
+// Declarar un objeto a partir de un type.
 type Direccion = {
   numero: number;
   calle: string;
@@ -110,7 +110,7 @@ const persona2: Persona = {
   },
 };
 
-// Definir un arrleglo de objetos
+// Definir un arrleglo de objetos.
 const arr: Persona[] = [persona1, persona2];
 
 arr.map((e) => console.log(e.nombre));
@@ -150,12 +150,12 @@ function validarEdad(edad: number, nombre: string = "Erick"): string {
   }
 }
 
-// La función puede tomar el valor de un argumento por defecto o cambiarlo si este se agrega cuando se invoca la función
+// La función puede tomar el valor de un argumento por defecto o cambiarlo si este se agrega cuando se invoca la función.
 
 console.log(validarEdad(26));
 console.log(validarEdad(27, "Elena"));
 
-// never (Es importante que se coloque el tipo de dato never cuando se utilicen funciones dedicadas solo a lanzar errores)
+// never (Es importante que se coloque el tipo de dato never cuando se utilicen funciones dedicadas solo a lanzar errores).
 
 function ErrorUsuario(): never {
   throw new Error("Error de usuario");
@@ -245,7 +245,7 @@ arr1?.[0];
 const fn5: any = null;
 fn5?.();
 
-// nullish coalescing operator(Sirve cuando el valor de 0 o '' es un valor representativo para nosotros y lo queremos diferenciar de null y/o undefine)
+// nullish coalescing operator(Sirve cuando el valor de 0 o '' es un valor representativo para nosotros y lo queremos diferenciar de null y/o undefine).
 
 const difficulty: number | null = null;
 
@@ -287,13 +287,13 @@ function procesa(algo: unknown): string {
 
 //Definir una clase
 class Personaje {
-  // readonly hace que solo se pueda inicializar una propiedad en el constructor
+  // readonly hace que solo se pueda inicializar una propiedad en el constructor.
   readonly id: number;
   name: string;
   nivel: number;
   // La palabra reservada private hace que la propiedad de la clase no pueda ser accedida desde afuera, solamente puede ser modificada por un método.
   private _hp: number;
-  // El operador ? vuelve a la propiedad opcinal y se puede acceder a ella despues de haber creado la clase
+  // El operador ? vuelve a la propiedad opcinal y se puede acceder a ella despues de haber creado la clase.
   profession?: string;
   constructor(id: number, name: string, nivel: number, hp: number) {
     this.id = id;
@@ -313,7 +313,7 @@ class Personaje {
   }
 }
 
-// Otra manera de definir clases (Propiedades por parámetros)
+// Otra manera de definir clases (Propiedades por parámetros):
 
 class Personaje2 {
   profession?: string;
@@ -353,7 +353,7 @@ class Personaje2 {
   }
 
   static getEquipo(): number {
-    return Personaje2.equipo
+    return Personaje2.equipo;
   }
 
   set hp(cantidad: number) {
