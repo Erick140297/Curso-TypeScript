@@ -70,3 +70,15 @@ class Perro implements Animal3{
     return 'guau'
   }
 }
+
+// Index signature
+class DiccionarioUsuarios{
+  [id: string]: string
+}
+
+//Cuando sea el caso en que tengamos un objeto con propiedades dinamicas, podemos asignarle el tipo utilizando indexsignature.
+let diccionarioUsuarios = new DiccionarioUsuarios()
+diccionarioUsuarios['1a'] = 'usuario 1'
+diccionarioUsuarios['2a'] = 'usuario 2'
+
+console.log(diccionarioUsuarios)
